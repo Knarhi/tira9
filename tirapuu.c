@@ -69,7 +69,7 @@ struct Node *leftRotate(struct Node *x) {
 
     return y;
 }
-
+/*tasapainon apufunktio */
 int getBalance(struct Node *N) {
     if (N == NULL)
         return 0;
