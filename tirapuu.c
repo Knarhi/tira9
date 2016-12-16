@@ -46,7 +46,7 @@ struct Node* newNode(int key) {
 struct Node *rightRotate(struct Node *y) {
     struct Node *x = y->left;
     struct Node *T2 = x->right;
-
+/*Tier 2-node talteen jotta ensimmäisen siirron jälkeen se voidaan "pelastaa bittiavaruudesta" ja kiinnittää uudelle paikalleen*/
     x->right = y;
     y->left = T2;
 
@@ -75,7 +75,7 @@ int getBalance(struct Node *N) {
         return 0;
     return height(N->left) - height(N->right);
 }
-
+/*insert-funktio etenee kunnes oikea paikka on löytynyt*/
 struct Node* insert(struct Node* node, int key) {
     if (node == NULL)
         return(newNode(key));
@@ -85,6 +85,7 @@ struct Node* insert(struct Node* node, int key) {
     else if (key > node->key) {
         node->right = insert(node->right, key);
     } else
+        printf("Number is already in the tree\n");
         return node;
 
     node->height = 1 + max(height(node->left), height(node->right));
@@ -116,7 +117,7 @@ void preOrder(struct Node *root) {
     if(root != NULL) /*Tulostaa aina solmun ja sen lapset, käy ensin vasemmalle jonka jälkeen oikealle. Ei siis varsinaisesti piirrä ascii-puuta vaan tulostaa luettavassa muodossa puun sisällön*/
     {
         if (root->left != NULL && root->right != NULL)
-            printf("Main node:%d\nLeft child:%d\n\Right child:%d\n\n", root->key, root->left->key, root->right->key);
+            printf("Main node:%d\nLeft child:%d\nRight child:%d\n\n", root->key, root->left->key, root->right->key);
         else if (root->left != NULL && root->right == NULL)
             printf("Main node:%d\nLeft child:%d\n\n", root->key, root->left->key);
         else if (root->left == NULL && root->right != NULL)
