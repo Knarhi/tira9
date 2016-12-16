@@ -32,7 +32,7 @@ int max(int a, int b) {
         return a;
     } else return b;
 }
-
+/*luontifunktio*/
 struct Node* newNode(int key) {
     struct Node* node = (struct Node*)malloc(sizeof(struct Node));
     node->key   = key;
